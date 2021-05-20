@@ -7,6 +7,7 @@ function App() {
     const [ count, setCount ] = useState('');
     const printCount = useRef(null);
     const expense = parseInt(count, 10);
+
     const showValue = () => {
         printCount.current.textContent = totalExpense;
     }
@@ -19,10 +20,14 @@ function App() {
         <div className="app">
             <h1 ref={printCount}>{}</h1>
             <input type="number" 
-            value={count} 
-            onChange={handleChange} />
-            <button 
-            onClick={showValue}>+</button>
+                value={count} 
+                onChange={handleChange} 
+                placeholder="today's expense..." />
+            <input 
+                type="text" 
+                placeholder="expense's item..." 
+                onChange={handleChange} />
+            <button onClick={showValue}>+</button>
         </div>
     );
 }
