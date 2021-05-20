@@ -1,35 +1,53 @@
-import './App.css';
-import React, { useState, useRef } from 'react';
+import React, { useState } from "react";
+import "./App.css";
 
 function App() {
+  //TODOS
+  //take input from user with prompt..
+  //show it in the available balance..
+  //subtract the expense amount from available balance..
 
-    let totalExpense = 0;
-    const [ count, setCount ] = useState('');
-    const printCount = useRef(null);
-    const expense = parseInt(count, 10);
+  const [totalExpense, setTotalExpense] = useState(0);
+  const [amount, setAmount] = useState("");
+  const [item, setItem] = useState("");
 
-    const showValue = () => {
-        printCount.current.textContent = totalExpense;
-    }
+  const setExpense = () => {
+    if(NaN)
+    setTotalExpense(
+      (prevExpense) => parseInt(amount, 10) + prevExpense);
+  };
 
-    const handleChange = (e) => {
-        setCount(e.target.value);
-    }
+  const handleChange = (e) => {
+    setAmount(e.target.value);
+  };
 
-    return (
-        <div className="app">
-            <h1 ref={printCount}>{}</h1>
-            <input type="number" 
-                value={count} 
-                onChange={handleChange} 
-                placeholder="today's expense..." />
-            <input 
-                type="text" 
-                placeholder="expense's item..." 
-                onChange={handleChange} />
-            <button onClick={showValue}>+</button>
-        </div>
-    );
+  return (
+    <div className="app">
+      <header>
+        <h1>
+          Expense Tracker App
+        </h1>
+      </header>
+      <div>
+        <p>Available Balance: <span>0,00,000</span></p>
+        <p>Total Spent: 
+            <span> {totalExpense} - {item} </span>
+        </p>
+      </div>
+      <input
+        type="text"
+        value={amount}
+        onChange={handleChange}
+        placeholder="Today's expense..."
+      />
+      <input
+        type="text"
+        placeholder="Item Name..."
+        onChange={(e) => setItem(e.target.value)}
+      />
+      <button onClick={setExpense}>➕</button>
+    </div>
+  );
 }
 
 export default App;
