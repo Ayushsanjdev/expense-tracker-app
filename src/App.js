@@ -12,7 +12,6 @@ function App() {
   const [item, setItem] = useState("");
 
   const setExpense = () => {
-    if(NaN)
     setTotalExpense(
       (prevExpense) => parseInt(amount, 10) + prevExpense);
   };
@@ -29,7 +28,7 @@ function App() {
         </h1>
       </header>
       <div>
-        <p>Available Balance: <span>0,00,000</span></p>
+        <p>Available Balance: <span>0</span></p>
         <p>Total Spent: 
             <span> {totalExpense} - {item} </span>
         </p>
